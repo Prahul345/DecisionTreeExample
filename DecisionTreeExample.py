@@ -1,28 +1,25 @@
-# Load libraries
 import pandas as pd
-from sklearn.tree import DecisionTreeClassifier # Import Decision Tree Classifier
-from sklearn.model_selection import train_test_split # Import train_test_split function
-from sklearn import metrics #Import scikit-learn metrics module for accuracy calculation
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import train_test_split
+from sklearn import metrics 
 
 
 
 column_name = ['pregnant', 'glucose', 'bp', 'skin', 'insulin', 'bmi', 'pedigree', 'age', 'label']
-# load dataset
+
 dataset = pd.read_csv("diabetes.csv", header=None, names=column_name)
 
 print("top 5 record in dataset is :::::",dataset.head())
 
-
-#split dataset in features and target variable
 featureColumn = ['pregnant', 'insulin', 'bmi', 'age','glucose','bp','pedigree']
 X_data = dataset[featureColumn] # Features
 y_data = dataset.label # Target variable
 
-# Split dataset into training set and test set
+
 X_train, X_test, y_train, y_test = train_test_split(X_data, y_data, test_size=0.25, random_state=1)
 
 
-# Create Decision Tree classifer object
+
 obj = DecisionTreeClassifier()
 
 # Train Decision Tree Classifer
